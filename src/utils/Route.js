@@ -5,6 +5,7 @@ import Register from "../components/Pages/Register/Register";
 import Reviews from "../components/Pages/Reviews/Reviews";
 import Services from "../components/Pages/Services/Services";
 import Main from "../layout/Main";
+import PrivateRoute from "../PrivateRoute/PrivateRout";
 
 const router = createBrowserRouter([
   {
@@ -21,7 +22,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/services",
-        element: <Services></Services>,
+        element: (
+          <PrivateRoute>
+            <Services></Services>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/reviews",

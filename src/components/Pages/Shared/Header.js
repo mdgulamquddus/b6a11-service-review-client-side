@@ -13,11 +13,11 @@ const Header = () => {
       <Link to="/home" className="btn btn-ghost">
         Home
       </Link>
+      <Link to="/services" className="btn btn-ghost">
+        SERVICES
+      </Link>
       {user?.email ? (
         <>
-          <Link to="/services" className="btn btn-ghost">
-            SERVICES
-          </Link>
           <Link to="/reviews" className="btn btn-ghost">
             Reviews
           </Link>
