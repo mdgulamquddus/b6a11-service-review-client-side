@@ -19,6 +19,7 @@ const router = createBrowserRouter([
       {
         path: "/home",
         element: <Home></Home>,
+        loader: async () => fetch(`http://localhost:5000/casesLimt3`),
       },
       {
         path: "/services",

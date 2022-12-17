@@ -1,14 +1,21 @@
-import React, { useContext } from "react";
-import { AuthContext } from "../../../Context/AuthProvider";
+import React from "react";
+import { Link, useLoaderData } from "react-router-dom";
+import SingleCase from "../Cases/SingleCase";
 import Banner from "../Shared/Banner";
 
 const Home = () => {
-  const user = useContext(AuthContext);
-  console.log(user.displayName);
+  const cases = useLoaderData();
+  console.log(cases);
   return (
     <div>
       <h1>This Home </h1>
       <Banner></Banner>
+      {cases.map((item) => (
+        <SingleCase key={item._id} item={item}></SingleCase>
+      ))}
+      <Link to="/services" className="btn btn-success">
+        View All
+      </Link>
     </div>
   );
 };

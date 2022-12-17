@@ -4,7 +4,6 @@ import { AuthContext } from "../../../Context/AuthProvider";
 
 const Header = () => {
   const { logoutUser, user } = useContext(AuthContext);
-  console.log(user?.email);
   const handleLogut = () => {
     logoutUser().then().catch();
   };
@@ -69,7 +68,7 @@ const Header = () => {
         <ul className="menu menu-horizontal px-1">{menuItems}</ul>
       </div>
       <div className="navbar-end">
-        <Link className="btn btn-outline btn-warning">appointment</Link>
+        <Link className="btn btn-outline btn-warning">Free Consultation</Link>
       </div>
     </div>
   );

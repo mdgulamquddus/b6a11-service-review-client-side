@@ -8,7 +8,6 @@ const Login = () => {
   const navigate = useNavigate();
 
   const from = location.state.from?.pathname || "/";
-  console.log(location);
 
   const handleSubmit = (e) => {
     e.preventDefault();

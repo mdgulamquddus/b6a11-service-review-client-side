@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import SingleCase from "../Cases/SingleCase";
 
 const Services = () => {
+  const [services, setServices] = useState([]);
+  useEffect(() => {
+    fetch(`http://localhost:5000/casesAll`)
+      .then((res) => res.json())
+      .then((data) => setServices(data))
+      .catch((err) => console.log(err));
+  }, []);
   return (
     <div>
       <h1>This Service Page</h1>
+      {services.map((item) => (
+        <SingleCase key={item._id} item={item}></SingleCase>
+      ))}
     </div>
   );
 };
