@@ -20,6 +20,9 @@ const Header = () => {
           <Link to="/reviews" className="btn btn-ghost">
             Reviews
           </Link>
+          <Link to="/orders" className="btn btn-ghost">
+            Orders
+          </Link>
           <Link onClick={handleLogut} className="btn btn-ghost">
             Logout
           </Link>

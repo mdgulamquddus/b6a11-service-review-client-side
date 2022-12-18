@@ -11,8 +11,11 @@ const SingleCase = ({ item }) => {
       <div className="card-body">
         <h2 className="card-title">{title}</h2>
         <p>Price : {price}</p>
-        <div className="card-actions justify-end">
-          <Link className="btn btn-outline btn-warning">Buy Now</Link>
+        <div className="card-actions justify-between">
+          <Link className="btn btn-outline btn-warning">Details</Link>
+          <Link to={`/checkout/${_id}`} className="btn btn-outline btn-warning">
+            Add Service
+          </Link>
         </div>
       </div>
     </div>

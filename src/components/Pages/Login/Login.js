@@ -1,13 +1,16 @@
 import React, { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Context/AuthProvider";
+import useTitle from "../../../Hooks/useTitle";
 
 const Login = () => {
   const { loginInUser } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
 
-  const from = location.state.from?.pathname || "/";
+  useTitle("Login");
+
+  const from = location.state?.from?.pathname || "/";
 
   const handleSubmit = (e) => {
     e.preventDefault();
