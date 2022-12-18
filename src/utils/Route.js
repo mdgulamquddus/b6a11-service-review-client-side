@@ -2,12 +2,12 @@ import { createBrowserRouter } from "react-router-dom";
 import Checkout from "../components/Pages/Checkout/Checkout";
 import Home from "../components/Pages/Home/Home";
 import Login from "../components/Pages/Login/Login";
+import Orders from "../components/Pages/Orders/Orders";
 import Register from "../components/Pages/Register/Register";
-import Reviews from "../components/Pages/Reviews/Reviews";
+import SinglePersonReview from "../components/Pages/Reviews/SinglePersonReview";
 import ServiceDetails from "../components/Pages/Services/ServiceDetails";
 import Services from "../components/Pages/Services/Services";
 import Main from "../layout/Main";
-import Orders from "../Orders/Orders";
 import PrivateRoute from "../PrivateRoute/PrivateRout";
 
 const router = createBrowserRouter([
@@ -34,7 +34,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/reviews",
-        element: <Reviews></Reviews>,
+        element: <SinglePersonReview></SinglePersonReview>,
       },
       {
         path: "/orders",

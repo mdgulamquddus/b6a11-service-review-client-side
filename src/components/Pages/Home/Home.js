@@ -14,7 +14,7 @@ const Home = () => {
       {services?.map((item) => (
         <SingleCase key={item._id} item={item}></SingleCase>
       ))}
-      <Link to="/services" className="btn btn-success">
+      <Link to="/services" className="btn btn-outline btn-warning my-10">
         View All
       </Link>
     </div>

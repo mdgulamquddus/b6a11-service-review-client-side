@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../Context/AuthProvider";
-import useTitle from "../Hooks/useTitle";
+import { AuthContext } from "../../../Context/AuthProvider";
+import useTitle from "../../../Hooks/useTitle";
 import OrdersRow from "./OrdersRow";
 
 const Orders = () => {
@@ -31,7 +31,7 @@ const Orders = () => {
                 </tr>
               </thead>
               <tbody>
-                {orders.map((ord, idx) => (
+                {orders?.map((ord, idx) => (
                   <OrdersRow key={ord._id} ord={ord} idx={idx}></OrdersRow>
                 ))}
               </tbody>
