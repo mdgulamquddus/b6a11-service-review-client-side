@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const OrdersRow = ({ ord, idx }) => {
-  const { serviceName, customer, message } = ord;
+const OrdersRow = ({ ord, idx, handleDelete }) => {
+  const { serviceName, customer, message, _id } = ord;
   return (
     <tr>
       <th>{`${idx + 1}`}</th>
@@ -10,7 +10,12 @@ const OrdersRow = ({ ord, idx }) => {
       <td>{customer}</td>
       <td>{message}</td>
       <td>
-        <Link className="btn btn-outline btn-error">Delete</Link>
+        <Link
+          onClick={() => handleDelete(_id)}
+          className="btn btn-outline btn-error"
+        >
+          Delete
+        </Link>
       </td>
     </tr>
   );

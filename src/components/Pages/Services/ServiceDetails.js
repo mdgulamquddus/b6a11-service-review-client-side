@@ -14,7 +14,7 @@ const ServiceDetails = () => {
       </h2>
       <img className="w-full rounded-sm" src={img} alt="" />
       <p className="mb-10">{description}</p>
-      <Reviews id={_id}></Reviews>
+      <Reviews id={_id} title={title}></Reviews>
     </div>
   );
 };

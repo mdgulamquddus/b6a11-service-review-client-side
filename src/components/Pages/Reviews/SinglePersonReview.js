@@ -10,6 +10,25 @@ const SinglePersonReview = () => {
       .then((res) => res.json())
       .then((data) => setReviews(data));
   }, [user?.email]);
+
+  const handleDelete = (id) => {
+    const procced = window.confirm("Are u sure you want to delet");
+    if (procced) {
+      fetch(`http://localhost:5000/reviews/${id}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          if (data.deletedCount) {
+            alert("Deleted Successfully");
+            const remainingReviews = reviews.filter((ord) => ord._id !== id);
+            setReviews(remainingReviews);
+          }
+        })
+        .catch((err) => console.log(err));
+    }
+  };
   return (
     <div>
       <h2>Your All Reviews</h2>
@@ -28,7 +47,12 @@ const SinglePersonReview = () => {
               </thead>
               <tbody>
                 {reviews?.map((rev, idx) => (
-                  <ReviewsRow key={rev._id} rev={rev} idx={idx}></ReviewsRow>
+                  <ReviewsRow
+                    key={rev._id}
+                    rev={rev}
+                    idx={idx}
+                    handleDelete={handleDelete}
+                  ></ReviewsRow>
                 ))}
               </tbody>
             </table>

@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const SingleCase = ({ item }) => {
-  const { title, price, _id, img } = item;
+  const { title, price, _id, img, description } = item;
   return (
     <div className="card card-compact w-96 bg-base-100 shadow-xl">
       <figure>
@@ -10,7 +10,8 @@ const SingleCase = ({ item }) => {
       </figure>
       <div className="card-body">
         <h2 className="card-title">{title}</h2>
-        <p>Price : {price}</p>
+        <p>{description.slice(0, 100)} ... </p>
+        <p>Price : $ {price}</p>
         <div className="card-actions justify-between">
           <Link
             to={`/serviceDetails/${_id}`}

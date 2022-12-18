@@ -2,17 +2,15 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Context/AuthProvider";
 
-const Reviews = ({ id }) => {
+const Reviews = ({ id, title }) => {
   const { user } = useContext(AuthContext);
-  console.log(user.photoURL);
   const [reviews, setReviews] = useState([]);
-  console.log(reviews);
   useEffect(() => {
     fetch(`http://localhost:5000/reviews/${id}`)
       .then((res) => res.json())
       .then((data) => setReviews(data))
       .catch((err) => console.log(err));
-  }, [id]);
+  }, [reviews, id]);
   const handleReview = (e) => {
     e.preventDefault();
 
@@ -25,10 +23,10 @@ const Reviews = ({ id }) => {
     const review = {
       email,
       customer: name,
+      serviceName: title,
       message,
       id,
     };
-    console.log(email, name, message, id);
 
     fetch("http://localhost:5000/reviews", {
       method: "POST",
@@ -41,7 +39,6 @@ const Reviews = ({ id }) => {
           form.reset();
           alert("Review Placed Successfully");
         }
-        console.log(data);
       })
       .catch((err) => console.log(err));
   };
@@ -51,7 +48,7 @@ const Reviews = ({ id }) => {
         All Customer Reviews
       </div>
       {reviews.map((review) => (
-        <div className="card w-96 bg-base-100 shadow-xl mb-3">
+        <div key={review._id} className="card w-96 bg-base-100 shadow-xl mb-3">
           <div className="card-body">
             <div className="flex gap-3">
               <div className="card-title">
@@ -112,7 +109,11 @@ const Reviews = ({ id }) => {
         </>
       ) : (
         <div>
-          Please <Link to="/login">Login</Link>For Review
+          Please{" "}
+          <Link className="text-yellow-500" to="/login">
+            Login
+          </Link>
+          For Review
         </div>
       )}
     </div>

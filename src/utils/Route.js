@@ -4,6 +4,7 @@ import Home from "../components/Pages/Home/Home";
 import Login from "../components/Pages/Login/Login";
 import Orders from "../components/Pages/Orders/Orders";
 import Register from "../components/Pages/Register/Register";
+import EditReviews from "../components/Pages/Reviews/EditReviews";
 import SinglePersonReview from "../components/Pages/Reviews/SinglePersonReview";
 import ServiceDetails from "../components/Pages/Services/ServiceDetails";
 import Services from "../components/Pages/Services/Services";
@@ -26,11 +27,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/services",
-        element: (
-          <PrivateRoute>
-            <Services></Services>
-          </PrivateRoute>
-        ),
+        element: <Services></Services>,
       },
       {
         path: "/reviews",
@@ -50,7 +47,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/checkout/:id",
-        element: <Checkout></Checkout>,
+        element: (
+          <PrivateRoute>
+            <Checkout></Checkout>
+          </PrivateRoute>
+        ),
         loader: async ({ params }) =>
           fetch(`http://localhost:5000/servicesAll/${params.id}`),
       },
@@ -59,6 +60,12 @@ const router = createBrowserRouter([
         element: <ServiceDetails></ServiceDetails>,
         loader: async ({ params }) =>
           fetch(`http://localhost:5000/servicesAll/${params.id}`),
+      },
+      {
+        path: "/editReviews/:id",
+        element: <EditReviews></EditReviews>,
+        loader: async ({ params }) =>
+          fetch(`http://localhost:5000/editReviews/${params.id}`),
       },
     ],
   },
