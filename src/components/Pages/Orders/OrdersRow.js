@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const OrdersRow = ({ ord, idx }) => {
   const { serviceName, customer, message } = ord;
@@ -9,7 +10,7 @@ const OrdersRow = ({ ord, idx }) => {
       <td>{customer}</td>
       <td>{message}</td>
       <td>
-        <button className="btn btn-outline btn-error">Delete</button>
+        <Link className="btn btn-outline btn-error">Delete</Link>
       </td>
     </tr>
   );

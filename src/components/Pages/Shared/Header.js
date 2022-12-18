@@ -18,7 +18,7 @@ const Header = () => {
       {user?.email ? (
         <>
           <Link to="/reviews" className="btn btn-ghost">
-            Reviews
+            My Reviews
           </Link>
           <Link to="/orders" className="btn btn-ghost">
             Orders

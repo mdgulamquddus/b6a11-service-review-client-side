@@ -11,12 +11,20 @@ const Home = () => {
     <div>
       <h1>This Home </h1>
       <Banner></Banner>
-      {services?.map((item) => (
-        <SingleCase key={item._id} item={item}></SingleCase>
-      ))}
-      <Link to="/services" className="btn btn-outline btn-warning my-10">
-        View All
-      </Link>
+      <div className="grid grid-cols-3 my-10">
+        {services?.map((item) => (
+          <SingleCase key={item._id} item={item}></SingleCase>
+        ))}
+      </div>
+
+      <div className="flex justify-center">
+        <Link
+          to="/services"
+          className="btn btn-outline btn-warning my-10 text-center"
+        >
+          View All
+        </Link>
+      </div>
     </div>
   );
 };

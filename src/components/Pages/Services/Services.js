@@ -14,9 +14,11 @@ const Services = () => {
   return (
     <div>
       <h1>This Service Page</h1>
-      {services?.map((item) => (
-        <SingleCase key={item._id} item={item}></SingleCase>
-      ))}
+      <div className="grid grid-cols-3 gap-4 my-10">
+        {services?.map((item) => (
+          <SingleCase key={item._id} item={item}></SingleCase>
+        ))}
+      </div>
     </div>
   );
 };
