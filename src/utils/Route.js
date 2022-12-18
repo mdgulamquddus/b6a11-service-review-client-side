@@ -4,6 +4,7 @@ import Home from "../components/Pages/Home/Home";
 import Login from "../components/Pages/Login/Login";
 import Register from "../components/Pages/Register/Register";
 import Reviews from "../components/Pages/Reviews/Reviews";
+import ServiceDetails from "../components/Pages/Services/ServiceDetails";
 import Services from "../components/Pages/Services/Services";
 import Main from "../layout/Main";
 import Orders from "../Orders/Orders";
@@ -50,6 +51,12 @@ const router = createBrowserRouter([
       {
         path: "/checkout/:id",
         element: <Checkout></Checkout>,
+        loader: async ({ params }) =>
+          fetch(`http://localhost:5000/servicesAll/${params.id}`),
+      },
+      {
+        path: "/serviceDetails/:id",
+        element: <ServiceDetails></ServiceDetails>,
         loader: async ({ params }) =>
           fetch(`http://localhost:5000/servicesAll/${params.id}`),
       },
