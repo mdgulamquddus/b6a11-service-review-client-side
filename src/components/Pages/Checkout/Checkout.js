@@ -83,7 +83,7 @@ const Checkout = () => {
         ></textarea>
         <input
           type="submit"
-          className="btn btn-ghost mt-3"
+          className="btn btn-outline btn-warning mt-3"
           value="Place Order"
         />
       </form>

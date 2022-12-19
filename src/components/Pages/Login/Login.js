@@ -2,9 +2,10 @@ import React, { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Context/AuthProvider";
 import useTitle from "../../../Hooks/useTitle";
+import { FaGoogle } from "react-icons/fa";
 
 const Login = () => {
-  const { loginInUser } = useContext(AuthContext);
+  const { loginInUser, loginWithGoogle } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -27,15 +28,32 @@ const Login = () => {
       })
       .catch((err) => console.log(err));
   };
+
+  const handleGoogle = () => {
+    loginWithGoogle()
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+
+        navigate(from, { replace: true });
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="text-center lg:text-left">
           <h1 className="text-5xl font-bold">Login now!</h1>
           <p className="py-6">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-            a id nisi.
+            The Law is organized to serve you and your needs. With dedicated
+            teams focused on the specific issues facing a wide variety of
+            Canadian businesses, non-profits, and individuals, we provide
+            representation in every major area of U.S. law. We understand how
+            changes in the law, along with related developments in your industry
+            and the larger economy, may affect you and your business. And as a
+            firm that gets the big picture, we also understand that every detail
+            counts.
           </p>
         </div>
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
@@ -77,6 +95,13 @@ const Login = () => {
               </Link>
             </p>
           </form>
+          <div className="text-center">
+            <h2 className="text-yellow-600 font-bold">Social Login</h2>
+            <hr className="mt-2 w-60 mx-auto" />
+            <button onClick={handleGoogle} className="my-5">
+              <FaGoogle className="text-2xl" />
+            </button>
+          </div>
         </div>
       </div>
     </div>

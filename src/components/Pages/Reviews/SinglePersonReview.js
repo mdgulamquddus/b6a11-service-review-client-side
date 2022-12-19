@@ -1,10 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../Context/AuthProvider";
+import useTitle from "../../../Hooks/useTitle";
 import ReviewsRow from "./ReviewsRow";
 
 const SinglePersonReview = () => {
   const { user } = useContext(AuthContext);
   const [reviews, setReviews] = useState([]);
+  useTitle("Single Person Reviews");
   useEffect(() => {
     fetch(`http://localhost:5000/reviews?email=${user?.email}`)
       .then((res) => res.json())
@@ -31,10 +33,12 @@ const SinglePersonReview = () => {
   };
   return (
     <div>
-      <h2>Your All Reviews</h2>
-      {reviews ? (
+      <h2 className="text-center text-yellow-500 font-bold text-3xl my-10">
+        Your All Reviews
+      </h2>
+      {reviews.length > 0 ? (
         <>
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto mb-40">
             <table className="table table-zebra w-full">
               <thead>
                 <tr>
@@ -59,7 +63,9 @@ const SinglePersonReview = () => {
           </div>
         </>
       ) : (
-        <div>Not Placed Any Orders</div>
+        <div className="text-center text-2xl font-bold">
+          Not Placed Any Reviews
+        </div>
       )}
     </div>
   );

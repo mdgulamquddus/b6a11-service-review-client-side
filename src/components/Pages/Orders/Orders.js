@@ -36,9 +36,9 @@ const Orders = () => {
       <h2 className="text-3xl text-center my-10 text-yellow-500 font-bold">
         You Have Placed All Orders
       </h2>
-      {orders ? (
+      {orders.length > 0 ? (
         <>
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto mb-40">
             <table className="table table-zebra w-full">
               <thead>
                 <tr>
@@ -63,7 +63,9 @@ const Orders = () => {
           </div>
         </>
       ) : (
-        <div>Not Placed Any Orders</div>
+        <div className="text-center text-2xl font-bold">
+          Not Placed Any Orders
+        </div>
       )}
     </div>
   );

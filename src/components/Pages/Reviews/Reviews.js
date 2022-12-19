@@ -52,10 +52,10 @@ const Reviews = ({ id, title }) => {
           <div className="card-body">
             <div className="flex gap-3">
               <div className="card-title">
-                {user.photoURL ? (
+                {user?.photoURL ? (
                   <div className="avatar mb-5">
                     <div className="w-12 rounded">
-                      <img src={user.photoURL} alt="" />
+                      <img src={user?.photoURL} alt="" />
                     </div>
                   </div>
                 ) : (

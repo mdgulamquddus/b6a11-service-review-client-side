@@ -13,7 +13,9 @@ const Services = () => {
   }, []);
   return (
     <div>
-      <h1>This Service Page</h1>
+      <h2 className="text-center text-yellow-500 font-bold text-3xl">
+        Our Services
+      </h2>
       <div className="grid grid-cols-3 gap-4 my-10">
         {services?.map((item) => (
           <SingleCase key={item._id} item={item}></SingleCase>

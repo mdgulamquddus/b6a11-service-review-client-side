@@ -19,6 +19,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+        loader: async () => fetch(`http://localhost:5000/servicesLimt3`),
       },
       {
         path: "/home",
