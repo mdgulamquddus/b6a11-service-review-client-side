@@ -15,6 +15,9 @@ const Header = () => {
       <Link to="/services" className="btn btn-ghost">
         SERVICES
       </Link>
+      <Link to="/blog" className="btn btn-ghost">
+        Blog
+      </Link>
       {user?.email ? (
         <>
           <Link to="/reviews" className="btn btn-ghost">
@@ -23,6 +26,7 @@ const Header = () => {
           <Link to="/orders" className="btn btn-ghost">
             Orders
           </Link>
+
           <Link onClick={handleLogut} className="btn btn-ghost">
             Logout
           </Link>
