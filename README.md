@@ -1,6 +1,6 @@
 # The Law Firm Web Application
 
-Web site live link [The Law Firm]([(https://lawyer-a446b.web.app/)).
+Web site live link [The Law Firm](https://lawyer-a446b.web.app)
 
 ## Available Scripts
 
