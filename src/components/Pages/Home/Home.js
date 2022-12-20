@@ -19,30 +19,29 @@ const Home = () => {
       <h2 className="text-center text-yellow-500 font-bold text-3xl">
         Services
       </h2>
-      <div>
-        {services > 0 ? (
-          <div className="flex justify-center my-40">
-            <CirclesWithBar
-              height="100"
-              width="100"
-              color="#e67e22"
-              wrapperStyle={{}}
-              wrapperClass=""
-              visible={true}
-              outerCircleColor=""
-              innerCircleColor=""
-              barColor=""
-              ariaLabel="circles-with-bar-loading"
-            />
-          </div>
-        ) : (
-          <div className="grid grid-cols-3 my-10">
-            {services?.map((item) => (
-              <SingleCase key={item._id} item={item}></SingleCase>
-            ))}
-          </div>
-        )}
-      </div>
+      {services && (
+        <div className="grid grid-cols-3 my-10">
+          {services?.map((item) => (
+            <SingleCase key={item._id} item={item}></SingleCase>
+          ))}
+        </div>
+      )}
+      {!services && (
+        <div className="flex justify-center my-40">
+          <CirclesWithBar
+            height="100"
+            width="100"
+            color="#e67e22"
+            wrapperStyle={{}}
+            wrapperClass=""
+            visible={true}
+            outerCircleColor=""
+            innerCircleColor=""
+            barColor=""
+            ariaLabel="circles-with-bar-loading"
+          />
+        </div>
+      )}
 
       <div className="flex justify-center">
         <Link

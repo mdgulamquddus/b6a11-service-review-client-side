@@ -5,11 +5,16 @@ import SingleCase from "../Cases/SingleCase";
 
 const Services = () => {
   const [services, setServices] = useState([]);
+  const [loading, setLoading] = useState(false);
   useTitle("Services");
   useEffect(() => {
+    setLoading(true);
     fetch(`http://localhost:5000/servicesAll`)
       .then((res) => res.json())
-      .then((data) => setServices(data))
+      .then((data) => {
+        setServices(data);
+        setLoading(false);
+      })
       .catch((err) => console.log(err));
   }, []);
   return (
@@ -18,13 +23,14 @@ const Services = () => {
         Our Services
       </h2>
       <div>
-        {services ? (
+        {!loading && (
           <div className="grid grid-cols-3 gap-4 my-10">
             {services?.map((item) => (
               <SingleCase key={item._id} item={item}></SingleCase>
             ))}
           </div>
-        ) : (
+        )}
+        {loading && (
           <div className="flex justify-center my-40">
             <CirclesWithBar
               height="100"
