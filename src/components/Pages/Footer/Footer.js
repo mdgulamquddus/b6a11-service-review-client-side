@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import useTitle from "../../../Hooks/useTitle";
 
 const Footer = () => {
+  useTitle("Footer");
   return (
     <footer className="footer footer-center p-10 bg-warning text-warning-content my-10">
       <div>

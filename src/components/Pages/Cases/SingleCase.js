@@ -2,9 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
+import useTitle from "../../../Hooks/useTitle";
 
 const SingleCase = ({ item }) => {
   const { title, price, _id, img, description } = item;
+  useTitle("Service");
   return (
     <div className="card card-compact w-96 bg-base-100 shadow-xl">
       <figure>

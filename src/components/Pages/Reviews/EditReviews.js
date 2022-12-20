@@ -1,9 +1,11 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
+import useTitle from "../../../Hooks/useTitle";
 
 const EditReviews = () => {
   const review = useLoaderData();
   const { customer, email, message, _id } = review[0];
+  useTitle("Edit Reviews");
 
   const handleUpdateReview = (e) => {
     e.preventDefault();

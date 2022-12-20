@@ -1,10 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import { AuthContext } from "../../../Context/AuthProvider";
+import useTitle from "../../../Hooks/useTitle";
 
 const Reviews = ({ id, title }) => {
   const { user } = useContext(AuthContext);
   const [reviews, setReviews] = useState([]);
+  useTitle("Reviews");
   useEffect(() => {
     fetch(`http://localhost:5000/reviews/${id}`)
       .then((res) => res.json())
@@ -26,6 +29,7 @@ const Reviews = ({ id, title }) => {
       serviceName: title,
       message,
       id,
+      createdAt: new Date(),
     };
 
     fetch("http://localhost:5000/reviews", {
@@ -37,7 +41,7 @@ const Reviews = ({ id, title }) => {
       .then((data) => {
         if (data.acknowledged) {
           form.reset();
-          alert("Review Placed Successfully");
+          toast.success("Review Placed Successfully");
         }
       })
       .catch((err) => console.log(err));
@@ -67,6 +71,7 @@ const Reviews = ({ id, title }) => {
                 )}
               </div>
               <p>{review.customer}</p>
+              <p>{review.createdAt}</p>
             </div>
             <p>{review.message}</p>
           </div>

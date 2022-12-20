@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import useTitle from "../../../Hooks/useTitle";
 
 const Request = () => {
+  useTitle("Request");
   return (
     <div className="flex">
       <div className="px-28">

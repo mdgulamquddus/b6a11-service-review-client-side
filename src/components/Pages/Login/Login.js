@@ -22,9 +22,23 @@ const Login = () => {
     loginInUser(email, password)
       .then((result) => {
         const user = result.user;
-        console.log(user);
-        form.reset();
-        navigate(from, { replace: true });
+        const currentUser = {
+          email: user.email,
+        };
+        // jwt token
+        fetch(`http://localhost:5000/jwt`, {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(currentUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            localStorage.setItem("theLaw-token", data.token);
+            navigate(from, { replace: true });
+          })
+          .catch((err) => console.log(err));
       })
       .catch((err) => console.log(err));
   };
@@ -74,7 +88,7 @@ const Login = () => {
                 <span className="label-text">Password</span>
               </label>
               <input
-                type="text"
+                type="password"
                 placeholder="password"
                 name="password"
                 className="input input-bordered"

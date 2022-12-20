@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import { AuthContext } from "../../../Context/AuthProvider";
 import useTitle from "../../../Hooks/useTitle";
 import ReviewsRow from "./ReviewsRow";
@@ -6,9 +7,13 @@ import ReviewsRow from "./ReviewsRow";
 const SinglePersonReview = () => {
   const { user } = useContext(AuthContext);
   const [reviews, setReviews] = useState([]);
-  useTitle("Single Person Reviews");
+  useTitle("My Reviews");
   useEffect(() => {
-    fetch(`http://localhost:5000/reviews?email=${user?.email}`)
+    fetch(`http://localhost:5000/reviews?email=${user?.email}`, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("theLaw-token")}`,
+      },
+    })
       .then((res) => res.json())
       .then((data) => setReviews(data));
   }, [user?.email]);
@@ -23,7 +28,7 @@ const SinglePersonReview = () => {
         .then((data) => {
           console.log(data);
           if (data.deletedCount) {
-            alert("Deleted Successfully");
+            toast.success("Deleted Successfully");
             const remainingReviews = reviews.filter((ord) => ord._id !== id);
             setReviews(remainingReviews);
           }

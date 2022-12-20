@@ -1,11 +1,14 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Context/AuthProvider";
 
 const Header = () => {
   const { logoutUser, user } = useContext(AuthContext);
+  const navigate = useNavigate();
   const handleLogut = () => {
-    logoutUser().then().catch();
+    logoutUser()
+      .then(() => navigate("/"))
+      .catch();
   };
   const menuItems = (
     <>

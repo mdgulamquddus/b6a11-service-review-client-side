@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import useTitle from "../../../Hooks/useTitle";
 
 const ReviewsRow = ({ rev, idx, handleDelete }) => {
+  useTitle("Review Row");
   const { customer, message, serviceName, _id } = rev;
   return (
     <tr>
