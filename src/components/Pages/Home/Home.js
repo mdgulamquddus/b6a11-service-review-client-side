@@ -1,4 +1,5 @@
 import React from "react";
+import { CirclesWithBar } from "react-loader-spinner";
 import { Link, useLoaderData } from "react-router-dom";
 import useTitle from "../../../Hooks/useTitle";
 import SingleCase from "../Cases/SingleCase";
@@ -8,6 +9,7 @@ import Request from "./Request";
 
 const Home = () => {
   const services = useLoaderData();
+
   useTitle("Home");
   return (
     <div className="mx-auto">
@@ -17,10 +19,29 @@ const Home = () => {
       <h2 className="text-center text-yellow-500 font-bold text-3xl">
         Services
       </h2>
-      <div className="grid grid-cols-3 my-10">
-        {services?.map((item) => (
-          <SingleCase key={item._id} item={item}></SingleCase>
-        ))}
+      <div>
+        {services > 0 ? (
+          <div className="flex justify-center my-40">
+            <CirclesWithBar
+              height="100"
+              width="100"
+              color="#e67e22"
+              wrapperStyle={{}}
+              wrapperClass=""
+              visible={true}
+              outerCircleColor=""
+              innerCircleColor=""
+              barColor=""
+              ariaLabel="circles-with-bar-loading"
+            />
+          </div>
+        ) : (
+          <div className="grid grid-cols-3 my-10">
+            {services?.map((item) => (
+              <SingleCase key={item._id} item={item}></SingleCase>
+            ))}
+          </div>
+        )}
       </div>
 
       <div className="flex justify-center">

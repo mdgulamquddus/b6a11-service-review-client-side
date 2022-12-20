@@ -1,6 +1,8 @@
 import React from "react";
+import useTitle from "../../../Hooks/useTitle";
 
 const ExpertTeam = () => {
+  useTitle("Expert Team");
   return (
     <div className="grid grid-cols-4 mx-auto ">
       <div className="card w-60 bg-base-300 shadow-xl">

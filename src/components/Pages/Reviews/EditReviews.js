@@ -1,9 +1,11 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import useTitle from "../../../Hooks/useTitle";
 
 const EditReviews = () => {
   const review = useLoaderData();
+  const navigate = useNavigate();
   const { customer, email, message, _id } = review[0];
   useTitle("Edit Reviews");
 
@@ -19,14 +21,10 @@ const EditReviews = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.modifiedCount) {
-          //   const remainingOrders = orders.filter((ord) => ord._id !== id);
-          //   const aprovingOrder = orders.find((ord) => ord._id === id);
-          //   aprovingOrder.status = "Aproved";
-          //   const newOrder = [...remainingOrders, aprovingOrder];
-          //   setOrders(newOrder);
+          toast.success("Reviews Edited Successfully");
         }
+        navigate("/reviews");
       })
       .catch((err) => console.log(err));
   };
